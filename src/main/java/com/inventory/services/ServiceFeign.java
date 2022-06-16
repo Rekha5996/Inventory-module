@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import com.inventory.model.Inventory;
 
 
 
-@FeignClient(name="PRODUCT-SERVICE",url="http://localhost:5996/product")
+@FeignClient(name="PRODUCT-SERVICE",url="http://localhost:8080/product")
 public interface ServiceFeign {
 	
 
@@ -27,10 +28,6 @@ public interface ServiceFeign {
 		//update inventory status by product id
 		@PutMapping("/updateproduct/{pid}")
 		public Optional<Inventory> updateUser(@RequestBody  Inventory inventory, @PathVariable("pid") long id);
-		
-		@PostMapping("/addproduct")
-		public Inventory CreateProduct(@RequestBody Inventory inv);
-		
 		
 	
 }

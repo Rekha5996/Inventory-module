@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.exception.ResourceNotFoundException;
 import com.inventory.model.Inventory;
+import com.inventory.repository.InventoryRepo;
 import com.inventory.services.ServiceFeign;
 
 
@@ -24,6 +25,9 @@ public class InventoryController {
 	
 	@Autowired
 	ServiceFeign service;
+	@Autowired
+	InventoryRepo irepo;
+	
 	
 			//get inventory status by product id
 			@GetMapping("/inventorystatus/{pid}")
@@ -31,7 +35,7 @@ public class InventoryController {
 				Optional<Inventory> op= service.findProduct(id);
 				if(op.isPresent())
 				{
-					return op.get();
+					return irepo.save(op.get());
 				}
 				else
 				{
@@ -46,7 +50,7 @@ public class InventoryController {
 				Optional<Inventory> op= service.updateUser(inv, id);
 				if(op.isPresent())
 				{
-					return op.get();
+					return irepo.save(op.get());
 				}
 				else
 				{
@@ -55,9 +59,4 @@ public class InventoryController {
 				//return service.updateUser(inv, id);
 				
 			}
-			//adding product
-			@PostMapping("/addproduct")
-			public Inventory CreateProduct(@RequestBody Inventory inv) {
-				return service.CreateProduct(inv);
 			}
-}

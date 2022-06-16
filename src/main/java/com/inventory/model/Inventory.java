@@ -24,9 +24,10 @@ import lombok.ToString;
 public class Inventory {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String pname;
-	private int pquantity;	
+	private String brandName;
+	private int productQtn;	
 	}
 	
 
