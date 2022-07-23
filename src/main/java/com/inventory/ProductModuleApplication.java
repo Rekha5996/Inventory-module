@@ -8,6 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.inventory.repository.InventoryRepo;
 
+/**
+ * @author Vuntla Rekhasree
+ *
+ */
 @SpringBootApplication()
 @EnableFeignClients
 public class ProductModuleApplication {

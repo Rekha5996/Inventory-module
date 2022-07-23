@@ -29,7 +29,7 @@ public class InventoryController {
 	InventoryRepo irepo;
 	
 	
-			//get inventory status by product id
+			//get inventory status by product id that knowing the status of product quantity
 			@GetMapping("/inventorystatus/{pid}")
 			public Inventory InventoryStatus(@PathVariable("pid")long id) throws ResourceNotFoundException {
 				Optional<Inventory> op= service.findProduct(id);
@@ -59,4 +59,5 @@ public class InventoryController {
 				//return service.updateUser(inv, id);
 				
 			}
+			
 			}
